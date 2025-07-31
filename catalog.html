@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Katalog Komik ComicVerse - Telusuri berbagai judul komik terbaik dari berbagai genre. Temukan dan beli komik favoritmu di Indonesia." />
+  <link rel="icon" type="image/png" href="assets/images/COMICVERSE.png">
+  <title>Katalog Komik - ComicVerse</title>
+  <link rel="stylesheet" href="assets/styles/style.css" />
+</head>
+
+<body>
+
+  <a href="#catalog-list" class="skip-link">Lewati ke konten utama</a>
+
+  <header class="navbar" role="banner">
+    <div class="logo">📚 ComicVerse</div>
+    <nav aria-label="Navigasi utama">
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="catalog.html">Katalog</a></li>
+        <li><a href="cart.html">Keranjang <span id="cart-count"></span></a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero slide delay-1">
+    <h1>Katalog Komik</h1>
+    <p>Telusuri berbagai judul terbaik dari berbagai genre</p>
+
+    <div class="search-filter-container">
+      <div class="search-box">
+        <label for="searchInput" class="visually-hidden">Cari judul komik</label>
+        <input type="text" id="searchInput" placeholder="Cari judul komik..." class="search-input" />
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <div class="filter-box">
+        <label for="genreFilter" class="visually-hidden">Filter berdasarkan Genre</label>
+        <select id="genreFilter" class="filter-select">
+          <option value="">Semua Genre</option>
+        </select>
+      </div>
+    </div>
+
+  </section>
+
+  <main class="products" id="catalog-list" tabindex="-1">
+  </main>
+
+  <footer>
+    <p>© 2025 ComicVerse. All rights reserved.</p>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+
+</html>

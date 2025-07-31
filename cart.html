@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Keranjang ComicVerse - Cek item yang kamu tambahkan sebelum checkout. Belanja komik favoritmu dengan mudah di Indonesia." />
+    <link rel="icon" type="image/png" href="assets/images/COMICVERSE.png">
+    <title>Keranjang - ComicVerse</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+</head>
+
+<body>
+
+    <a href="#cart-items" class="skip-link">Lewati ke konten utama</a>
+
+    <header class="navbar" role="banner">
+        <div class="logo">📚 ComicVerse</div>
+        <nav aria-label="Navigasi utama">
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="catalog.html">Katalog</a></li>
+                <li><a href="cart.html">Keranjang <span id="cart-count"></span></a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Keranjang Kamu</h1>
+        <p>Cek item yang kamu tambahkan sebelum checkout!</p>
+    </section>
+
+    <main class="products" id="cart-items" tabindex="-1">
+    </main>
+
+    <footer>
+        <p>© 2025 ComicVerse</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

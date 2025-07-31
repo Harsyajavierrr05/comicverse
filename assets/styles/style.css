@@ -1,0 +1,695 @@
+/* --- 0. Basic / Global Resets --- */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8fafc;
+    /* Latar belakang terang */
+    color: #333;
+    /* Warna teks default */
+    box-sizing: border-box;
+    /* Model box-sizing konsisten */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    /* Inherit box-sizing */
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* Mencegah spasi bawah pada gambar inline */
+}
+
+/* --- 1. Accessibility --- */
+.visually-hidden {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 100;
+    background: #2563eb;
+    color: #fff;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: left 0.2s, box-shadow 0.2s;
+}
+
+.skip-link:focus {
+    left: 16px;
+    width: auto;
+    height: auto;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+    outline: 2px solid #2563eb;
+}
+
+/* --- 2. Navbar --- */
+.navbar {
+    background-color: #1f2937;
+    /* Warna gelap */
+    color: white;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #fff;
+    /* Pastikan logo berwarna putih */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+    margin: 0;
+    /* Hapus margin default ul */
+    padding: 0;
+    /* Hapus padding default ul */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.25em 0.5em;
+    border-radius: 3px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    background: #2563eb;
+    color: #fff;
+    outline: none;
+}
+
+/* --- 3. Hero Section --- */
+.hero {
+    text-align: center;
+    padding: 3em 1em;
+    background-color: #4f46e5;
+    /* Biru keunguan */
+    color: white;
+    padding-bottom: 4em;
+    /* Jarak bawah agar ada ruang ke produk */
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-top: 0;
+}
+
+
+/* --- 4. Search and Filter Container --- */
+.search-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5em;
+    margin-top: 2em;
+    /* Jarak dari teks hero */
+    padding: 1.5em 2em;
+    /* Tambah padding */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Latar belakang semi-transparan */
+    border-radius: 12px;
+    /* Radius lebih besar */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    /* Efek blur jika browser support */
+    -webkit-backdrop-filter: blur(5px);
+    /* Untuk kompatibilitas Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Border samar */
+    backdrop-filter: blur(5px);
+}
+
+.search-box {
+    position: relative;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.9em 2.8em 0.9em 1.2em;
+    /* Padding kanan untuk ikon */
+    border: 1px solid #a0aec0;
+    border-radius: 8px;
+    font-size: 1.05em;
+    background-color: #f8fafc;
+    color: #333;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+    color: #a0aec0;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1.2em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    pointer-events: none;
+    font-size: 1.2em;
+}
+
+.filter-box {
+    position: relative;
+    min-width: 180px;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 0.9em 2.5em 0.9em 1.2em;
+    border: 1px solid #a0aec0;
+    border-radius: 8px;
+    font-size: 1.05em;
+    background-color: #f8fafc;
+    color: #333;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%2364748b" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1em top 50%;
+    background-size: 1.2em auto;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* --- 5. Produk (Kartu) --- */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    /* Jarak antar kartu */
+    padding: 2em;
+    /* Padding container produk */
+    padding-top: 4em;
+    /* Jarak dari hero/search-filter */
+}
+
+.product-card {
+    background: white;
+    padding: 1.2em;
+    /* Padding kartu */
+    width: 220px;
+    /* Lebar standar kartu */
+    border-radius: 0.8em;
+    /* Radius sudut kartu */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Bayangan kartu */
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    /* Menunjukkan kartu bisa diklik */
+
+    display: flex;
+    /* Menggunakan flexbox untuk tata letak internal kartu */
+    flex-direction: column;
+    /* Konten di dalam kartu menumpuk */
+    justify-content: space-between;
+    /* Dorong konten ke atas/bawah */
+    min-height: 400px;
+    /* Tinggi minimum kartu agar konsisten */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    /* Bayangan saat hover */
+}
+
+.product-card img {
+    height: 280px;
+    /* Tinggi gambar agar konsisten */
+    object-fit: cover;
+    /* Pastikan gambar mengisi ruang tanpa distorsi */
+    margin-bottom: 0.8em;
+    /* Jarak dari teks judul */
+    border-radius: 0.5em;
+    /* Radius sudut gambar */
+}
+
+.product-card h3 {
+    margin: 0;
+    font-size: 1.1em;
+    min-height: 2.2em;
+    /* Tinggi minimum agar judul 2 baris tidak geser elemen lain */
+    display: -webkit-box;
+    /* Untuk memotong teks */
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    /* Potong setelah 2 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.1em;
+    margin-bottom: 0.3em;
+    color: #2d3748;
+    /* Warna judul */
+}
+
+.product-card p.price {
+    margin: 0;
+    font-weight: 700;
+    color: #4f46e5;
+    font-size: 1.15em;
+    margin-bottom: 0;
+    /* Hapus margin bawah jika tidak ada tombol */
+    margin-top: auto;
+    /* Dorong harga ke bawah agar menempel ke bawah kartu */
+}
+
+/* --- 6. Footer --- */
+footer {
+    text-align: center;
+    padding: 1.5em;
+    /* Padding lebih banyak */
+    background-color: #1f2937;
+    color: white;
+    margin-top: 4em;
+    /* Jarak dari konten atas */
+}
+
+/* --- 7. Toast Notification --- */
+.toast {
+    position: fixed;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2563eb;
+    color: #fff;
+    padding: 0.8em 1.5em;
+    /* Padding lebih besar */
+    border-radius: 6px;
+    /* Radius lebih besar */
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    /* Transisi lebih halus */
+    z-index: 100;
+    font-size: 1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.toast.show {
+    bottom: 20px;
+    opacity: 1;
+}
+
+/* --- 8. Detail Produk (Penting: Letakkan di bagian bawah agar override yang lain) --- */
+
+/* Kontainer utama halaman detail (pastikan ini di bawah definisi .products) */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em;
+    /* Padding di semua sisi */
+    padding-bottom: 4em;
+    box-sizing: border-box;
+}
+
+/* Kelas flexbox dasar yang Anda miliki (penting untuk tata letak detail) */
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.justify-center { justify-content: center; }
+.items-center { align-items: center; }
+
+
+/* Padding dan margin yang konsisten */
+.p-6 {
+    padding: 1.5rem;
+}
+
+.md\:p-10 {
+    padding: 2.5rem;
+}
+
+/* Untuk ukuran menengah ke atas */
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+}
+
+.mr-4 {
+    margin-right: 1rem;
+}
+
+.ml-4 {
+    margin-left: 1rem;
+}
+
+/* Warna dan bayangan (kelas ini sudah ada di CSS Anda) */
+.bg-white {
+    background-color: white;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+/* Teks dan font */
+.text-center {
+    text-align: center;
+}
+
+.text-gray-900 {
+    color: #1a202c;
+}
+
+.text-gray-700 {
+    color: #4a5568;
+}
+
+.text-gray-800 {
+    color: #2d3748;
+}
+
+.text-indigo-600 {
+    color: #4c51bf;
+}
+
+.text-red-600 {
+    color: #e53e3e;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.font-extrabold {
+    font-weight: 800;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+}
+
+.text-4xl {
+    font-size: 2.25rem;
+}
+
+.leading-relaxed {
+    line-height: 1.625;
+}
+
+/* Responsive untuk layout detail produk */
+@media (min-width: 768px) {
+    .md\:flex-row {
+        flex-direction: row;
+    }
+
+    .md\:w-1\/3 {
+        width: 33.333333%;
+    }
+
+    .md\:w-2\/3 {
+        width: 66.666667%;
+    }
+}
+
+/* Styling GAMBAR di detail produk (Sudah dioptimasi di bagian atas) */
+.product-detail-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    /* Batasi tinggi gambar di desktop */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Menyembunyikan pesan error/loading (sudah ada) */
+.hidden {
+    display: none;
+}
+
+
+/* Styling untuk grup informasi (Penulis, Penerbit, Genre) */
+.info-group {
+    display: flex;
+    margin-bottom: 0.5rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.info-label {
+    font-weight: 500;
+    color: #4a5568;
+    min-width: 80px;
+    margin-right: 1rem;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.info-value {
+    color: #2d3748;
+    flex-grow: 1;
+    word-break: break-word;
+}
+
+
+.product-price {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    /* Memberi jarak ke deskripsi */
+    font-size: 2.5rem;
+    /* Ukuran default desktop */
+}
+
+@media (max-width: 767px) {
+
+    /* Untuk tampilan mobile/tablet */
+    .product-price {
+        font-size: 2rem;
+        /* Agak kecilkan di mobile jika perlu */
+        text-align: center;
+        /* Harga di tengah di mobile */
+        width: 100%;
+        /* Ambil lebar penuh */
+    }
+
+    .info-group {
+        flex-direction: column;
+        /* Label dan value menumpuk di mobile */
+        align-items: flex-start;
+        /* Rata kiri di mobile */
+    }
+
+    .info-label {
+        min-width: unset;
+        /* Hapus min-width di mobile */
+        text-align: left;
+        /* Rata kiri di mobile */
+        margin-right: 0;
+        margin-bottom: 0.25rem;
+        /* Jarak bawah label */
+    }
+}
+
+/* Styling untuk deskripsi produk */
+.product-description {
+    line-height: 1.6;
+    color: #2d3748;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 250px;
+    /* Batasi tinggi deskripsi di desktop */
+    padding-right: 10px;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
+    /* Jarak dari tombol */
+}
+
+/* Styling scrollbar */
+.product-description::-webkit-scrollbar {
+    width: 8px;
+    background-color: #f1f5f9;
+}
+
+.product-description::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+}
+
+.product-description::-webkit-scrollbar-track {
+    background-color: #f1f5f9;
+}
+
+/* Styling untuk grup tombol di halaman detail */
+.button-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Adjustments for button sizes on mobile */
+@media (max-width: 640px) {
+    .button-group {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .button-group button {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+}
+
+/* --- 9. Animasi (Pastikan semua delay ada jika digunakan) --- */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide {
+    opacity: 0;
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+.delay-4 {
+    animation-delay: 0.4s;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+}
+
+/* --- 10. Toast --- */
+.toast {
+    position: fixed;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2563eb;
+    color: #fff;
+    padding: 0.8em 1.5em;
+    border-radius: 6px;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    z-index: 100;
+    font-size: 1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.toast.show {
+    bottom: 20px;
+    opacity: 1;
+}

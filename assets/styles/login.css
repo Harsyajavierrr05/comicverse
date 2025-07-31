@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Memastikan padding dan border dihitung dalam width */
+}
+
+/* Global styling untuk halaman login/register */
+body {
+    background: #0f172a;
+    /* Warna latar belakang gelap */
+    color: #fff;
+    /* Warna teks default */
+    font-family: 'Segoe UI', sans-serif;
+    /* Font konsisten */
+    display: flex;
+    justify-content: center;
+    /* Pusatkan horizontal */
+    align-items: center;
+    /* Pusatkan vertikal */
+    min-height: 100vh;
+    /* UBAH: Minimal setinggi viewport, bisa scroll */
+}
+
+.login-container {
+    background: #1e293b;
+    /* Warna background kontainer */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    /* Agar responsif */
+    max-width: 400px;
+    /* Batasi lebar maksimal */
+    text-align: center;
+    /* Pusatkan konten teks di dalam kontainer */
+}
+
+.login-container h2 {
+    margin-top: 0;
+    color: #cbd5e1;
+    /* Warna judul */
+    margin-bottom: 1.5rem;
+}
+
+input {
+    width: calc(100% - 1.6rem);
+    /* 100% lebar dikurangi padding */
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #475569;
+    /* Border input */
+    background-color: #334155;
+    /* Background input */
+    color: #e2e8f0;
+    /* Teks input */
+    border-radius: 6px;
+    box-sizing: border-box;
+    /* Penting agar padding tidak menambah lebar */
+}
+
+input:focus {
+    outline: 2px solid #3b82f6;
+    /* Outline biru saat fokus */
+    border-color: #3b82f6;
+}
+
+button {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 1rem 0 0.5rem;
+    border: none;
+    border-radius: 6px;
+    background: #3b82f6;
+    /* Warna biru primer */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #2563eb;
+    /* Warna biru lebih gelap saat hover */
+}
+
+.login-container p {
+    margin-top: 1rem;
+    font-size: 0.9em;
+    color: #a0aec0;
+    /* Warna teks lembut */
+}
+
+.login-container p a {
+    color: #60a5fa;
+    /* Warna link */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-container p a:hover {
+    text-decoration: underline;
+}
+
+/* --- ANIMASI SLIDE --- */
+/* Pindahkan keyframes dan kelas ini dari style.css ke login.css */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide {
+    opacity: 0;
+    /* Penting: Mulai dengan opacity 0 agar animasi terlihat */
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.1s;
+}
