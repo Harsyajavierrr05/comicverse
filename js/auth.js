@@ -5,11 +5,11 @@ function getLoginStatus() {
 }
 
 // Fungsi untuk menyimpan status login ke localStorage
-function setLoginStatus(status) {
+function setLoginStatus(status, username = null) {
   localStorage.setItem('isLoggedIn', status);
   // Simpan juga username jika berhasil login
   if (status) {
-      localStorage.setItem('loggedInUser', 'AdminDummy'); // Contoh username dummy
+      localStorage.setItem('loggedInUser', 'username'); // Contoh username dummy
   } else {
       localStorage.removeItem('loggedInUser');
   }
@@ -47,15 +47,13 @@ function updateNavbarLoginStatus() {
   // Logika Login yang Diperbarui:
   // Coba login dengan akun yang baru didaftarkan, ATAU fallback ke admin/password123
   if (lastRegisteredUser && usernameInput === lastRegisteredUser.username && passwordInput === lastRegisteredUser.password) {
-    setLoginStatus(true);
-    localStorage.setItem('loggedInUser', lastRegisteredUser.username); // Set username yang benar
+    setLoginStatus(true, lastRegisteredUser.username);
     showToast(`Selamat datang, ${lastRegisteredUser.username}!`);
     setTimeout(() => {
       window.location.href = 'index.html';
     }, 1000);
   } else if (usernameInput === 'admin' && passwordInput === 'password123') { // Fallback ke akun admin bawaan
-    setLoginStatus(true);
-    localStorage.setItem('loggedInUser', 'AdminDummy');
+    setLoginStatus(true, 'AdminDummy');
     showToast(`Selamat datang, AdminDummy!`);
     setTimeout(() => {
       window.location.href = 'index.html';
