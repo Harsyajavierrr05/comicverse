@@ -1,5 +1,3 @@
-// js/auth.js
-// Membutuhkan: common.js (untuk showToast, updateCartBadge)
 
 // Fungsi untuk mendapatkan status login dari localStorage
 function getLoginStatus() {
