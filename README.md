@@ -1,1 +1,1 @@
-This website was implemented for Final Project of SLP Training of Web Development Division
+This website was implemented for Final Project of SLP Training of Web Development Division. This website solely focusing on mini basic e-commerce for bookfans environment, especially comics. The language used here including HTML, CSS, JS, PHP, and SQL for database
