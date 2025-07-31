@@ -23,13 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
       total += item.price * (item.quantity || 1); 
 
     const cartItemElement = document.createElement('div');
-      // Perhatikan kelas CSS: flex items-center justify-between mb-4
-      // Anda mungkin ingin menyesuaikan jika tidak ada gambar
       cartItemElement.className = 'cart-item bg-white p-4 rounded-lg shadow-md flex items-center justify-between mb-4';
       
       
       cartItemElement.innerHTML = `
-        <div class="flex items-center flex-grow"> <div>
+        <div class="flex items-center flex-grow"> 
+        <div>
             <h3 class="text-lg font-semibold text-gray-800">${item.title}</h3>
             <p class="text-gray-600">Rp${item.price.toLocaleString('id-ID')}</p>
           </div>

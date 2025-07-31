@@ -4,8 +4,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const catalogListContainer = document.getElementById("catalog-list");
-  const searchInput = document.getElementById("searchInput");
-  const genreFilter = document.getElementById("genreFilter"); // Dapatkan elemen filter genre
+  const searchInput = document.getElementById("catalogSearchInput");
+  const genreFilter = document.getElementById("catalogGenreFilter"); // Dapatkan elemen filter genre
   let allProducts = []; // Akan menyimpan semua produk yang di-fetch dari API
 
   // Fungsi untuk merender produk ke DOM
