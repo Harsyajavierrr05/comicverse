@@ -34,16 +34,10 @@ function updateNavbarLoginStatus() {
 }
 
 // Handle Login (Dummy)
-function handleLogin(event) {
-  event.preventDefault(); // Mencegah form submit default (page refresh)
-
-  const form = event.target;
-  const usernameInput = document.getElementById('loginUsername').value;
-  const passwordInput = document.getElementById('loginPassword').value;
-
   function handleLogin(event) {
   event.preventDefault();
-
+  
+  const form = event.target;
   const usernameInput = document.getElementById('loginUsername').value;
   const passwordInput = document.getElementById('loginPassword').value;
 
@@ -125,4 +119,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-}
