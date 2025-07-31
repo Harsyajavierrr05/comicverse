@@ -43,14 +43,31 @@ function handleLogin(event) {
   const usernameInput = document.getElementById('loginUsername').value;
   const passwordInput = document.getElementById('loginPassword').value;
 
-  // Logika Dummy Login: Cek username dan password statis
-  if (usernameInput === 'admin' && passwordInput === 'password123') { // Kredensial dummy
+  function handleLogin(event) {
+  event.preventDefault();
+
+  const usernameInput = document.getElementById('loginUsername').value;
+  const passwordInput = document.getElementById('loginPassword').value;
+
+  // Ambil akun yang terakhir didaftarkan dari localStorage (jika ada)
+  const lastRegisteredUser = JSON.parse(localStorage.getItem('lastRegisteredUser'));
+
+  // Logika Login yang Diperbarui:
+  // Coba login dengan akun yang baru didaftarkan, ATAU fallback ke admin/password123
+  if (lastRegisteredUser && usernameInput === lastRegisteredUser.username && passwordInput === lastRegisteredUser.password) {
     setLoginStatus(true);
-    showToast(`Selamat datang, ${localStorage.getItem('loggedInUser')}!`);
-    // Redirect ke halaman beranda atau katalog setelah login sukses
+    localStorage.setItem('loggedInUser', lastRegisteredUser.username); // Set username yang benar
+    showToast(`Selamat datang, ${lastRegisteredUser.username}!`);
     setTimeout(() => {
       window.location.href = 'index.html';
-    }, 1000); // Redirect setelah 1 detik
+    }, 1000);
+  } else if (usernameInput === 'admin' && passwordInput === 'password123') { // Fallback ke akun admin bawaan
+    setLoginStatus(true);
+    localStorage.setItem('loggedInUser', 'AdminDummy');
+    showToast(`Selamat datang, AdminDummy!`);
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 1000);
   } else {
     showToast('Username atau password salah.');
     setLoginStatus(false);
@@ -67,8 +84,13 @@ function handleRegister(event) {
 
     // Logika Dummy Register: Cukup simulasikan berhasil terdaftar
     if (usernameInput && passwordInput) {
-        showToast('Akun berhasil didaftarkan! Silakan login.');
-        // Redirect ke halaman login setelah registrasi sukses
+        // Simpan akun yang baru diregistrasi ke localStorage
+        localStorage.setItem('lastRegisteredUser', JSON.stringify({
+            username: usernameInput,
+            password: passwordInput // Password disimpan plaintext (tidak dihash) karena tidak ada backend
+        }));
+
+        showToast('Akun berhasil didaftarkan! Silakan login dengan akun Anda.');
         setTimeout(() => {
             window.location.href = 'login.html';
         }, 1000);
@@ -105,3 +127,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+}
