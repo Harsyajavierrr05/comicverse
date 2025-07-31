@@ -40,8 +40,8 @@ function handleLogin(event) {
   event.preventDefault(); // Mencegah form submit default (page refresh)
 
   const form = event.target;
-  const usernameInput = form.querySelector('input[name="username"]').value;
-  const passwordInput = form.querySelector('input[name="password"]').value;
+  const usernameInput = document.getElementById('loginUsername').value;
+  const passwordInput = document.getElementById('loginPassword').value;
 
   // Logika Dummy Login: Cek username dan password statis
   if (usernameInput === 'admin' && passwordInput === 'password123') { // Kredensial dummy
@@ -62,8 +62,8 @@ function handleRegister(event) {
     event.preventDefault(); // Mencegah form submit default
 
     const form = event.target;
-    const usernameInput = form.querySelector('input[name="username"]').value;
-    const passwordInput = form.querySelector('input[name="password"]').value;
+    const usernameInput = document.getElementById('registerUsername').value;
+    const passwordInput = document.getElementById('registerPassword').value;
 
     // Logika Dummy Register: Cukup simulasikan berhasil terdaftar
     if (usernameInput && passwordInput) {
