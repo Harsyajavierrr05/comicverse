@@ -91,17 +91,27 @@ function handleRegister(event) {
 
 // Tambahkan event listener untuk tombol Logout di navbar (jika sudah login)
 document.addEventListener('DOMContentLoaded', () => {
-    updateNavbarLoginStatus(); // Inisialisasi status login di navbar saat DOM siap
+    console.log("auth.js: DOMContentLoaded fired."); // Tambahkan ini
 
     const loginForm = document.querySelector('form[action="auth/login.php"]');
+    console.log("auth.js: loginForm element found?", loginForm); // Tambahkan ini
     if (loginForm) {
         loginForm.addEventListener('submit', handleLogin);
+        console.log("auth.js: Login form event listener attached."); // Tambahkan ini
+    } else {
+        console.warn("auth.js: Login form with action='auth/login.php' NOT found on this page."); // Tambahkan ini
     }
 
     const registerForm = document.querySelector('form[action="auth/register.php"]');
+    console.log("auth.js: registerForm element found?", registerForm); // Tambahkan ini
     if (registerForm) {
         registerForm.addEventListener('submit', handleRegister);
+        console.log("auth.js: Register form event listener attached."); // Tambahkan ini
+    } else {
+        console.warn("auth.js: Register form with action='auth/register.php' NOT found on this page."); // Tambahkan ini
     }
+
+    updateNavbarLoginStatus
 
     // Event delegation untuk link logout (karena link bisa berubah)
     document.querySelector('.nav-links').addEventListener('click', (event) => {
