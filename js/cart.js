@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItemElement = document.createElement('div');
       cartItemElement.className = 'cart-item bg-white p-4 rounded-lg shadow-md flex items-center justify-between mb-4';
       
-      
       cartItemElement.innerHTML = `
         <div class="flex items-center flex-grow"> 
         <div>
@@ -88,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Event listener untuk tombol checkout dummy
+    // --- PERBAIKAN DI SINI: Event listener untuk tombol checkout dummy ---
     document.querySelector('.checkout-btn').addEventListener('click', () => {
-      showToast('Fitur pembayaran belum diimplementasikan!');
+      handleDummyCheckout(); // Panggil fungsi baru ini
     });
   }
 
@@ -111,6 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Render keranjang saat halaman dimuat
+  // Fungsi baru untuk menangani checkout dummy
+  function handleDummyCheckout() {
+    const cart = getCart();
+    if (cart.length === 0) {
+      showToast("Keranjang Anda kosong. Tambahkan produk sebelum checkout.");
+      return;
+    }
+
+    showToast("Pesanan Anda berhasil diproses! (Simulasi Pembayaran)");
+
+    // Kosongkan keranjang setelah checkout dummy
+    localStorage.removeItem('cart');
+    
+    // Perbarui tampilan keranjang dan badge setelah sedikit delay agar toast terlihat
+    setTimeout(() => {
+      renderCart(); // Panggil ulang untuk membersihkan tampilan keranjang
+      updateCartBadge(); // Perbarui badge di navbar
+    }, 1500); // Tunda 1.5 detik
+  }
+
+  // Render keranjang saat halaman dimuat pertama kali
   renderCart();
 });
